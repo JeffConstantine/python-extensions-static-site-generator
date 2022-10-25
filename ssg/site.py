@@ -1,9 +1,6 @@
 import sys
 from pathlib import Path
-
 from ssg import extensions, hooks
-
-
 class Site:
     def __init__(self, source, dest, parsers=None):
         self.source = Path(source)
@@ -24,7 +21,6 @@ class Site:
             self.error(
                 "No parser for the {} extension, file skipped!".format(path.suffix)
             )
-
     def build(self):
         extensions.load_bundled()
         hooks.event("collect_files", self.source, self.parsers)
